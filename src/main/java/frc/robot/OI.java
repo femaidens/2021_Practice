@@ -3,6 +3,10 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot;
+import edu.wpi.first.wpilibj.Joystick;
 
 /** Add your docs here. */
-public class OI {}
+public class OI {
+    public static Joystick driveJoy = new Joystick(RobotMap.drivePort);
+	public static Joystick operJoy = new Joystick(RobotMap.operPort);
+}

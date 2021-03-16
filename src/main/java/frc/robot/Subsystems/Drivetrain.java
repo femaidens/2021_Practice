@@ -9,10 +9,10 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.Joystick;
 
 import frc.robot.RobotMap;
 import frc.robot.Commands.*;
+import frc.robot.OI;
 
 
 /** Add your docs here. */
@@ -32,8 +32,6 @@ public class Drivetrain extends Subsystem {
   public CANEncoder leftEncoder = frontLeft.getEncoder();
   public CANEncoder rightEncoder = frontRight.getEncoder();
 
-  public Joystick joy = new Joystick(RobotMap.joyPort);
-
 
   @Override
   public void initDefaultCommand() {
@@ -43,8 +41,8 @@ public class Drivetrain extends Subsystem {
   }
 
   public void driveTeleop(){
-    double leftJoy = joy.getRawAxis(1);
-    double rightJoy = joy.getRawAxis(5);
+    double leftJoy = OI.driveJoy.getRawAxis(1);
+	  double rightJoy = OI.driveJoy.getRawAxis(5);
     frontLeft.set(leftJoy);
     middleLeft.set(leftJoy);
     backLeft.set(leftJoy);
