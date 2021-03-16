@@ -7,7 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveTeleop extends Command {
-  public DriveTeleop(){
+  	public DriveTeleop(){
 		requires(Robot.drivetrain); 
 	}
 
@@ -18,8 +18,8 @@ public class DriveTeleop extends Command {
 		Robot.drivetrain.driveTeleop();
 	}
 
-protected boolean isFinished(){
-	return false;
+	protected boolean isFinished(){
+		return false;
 	}
 
 	protected void end() {

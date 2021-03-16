@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import frc.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveStraight extends Command {
@@ -15,21 +17,21 @@ public class DriveStraight extends Command {
 		dist = d;
 	}
 	protected void initialize() {
-  }
+	}
 
 	protected void execute() {
 		Robot.drivetrain.driveStraight();
 	}
 
 	protected boolean isFinished(){
-		return(Robot.drivetrain.rightEncoder.getPosition() >= dist && Robot.drivetrain.leftEncoder.getPosition() >=  dist);
-  }
+		return (Robot.drivetrain.rightEncoder.getPosition() >= dist && Robot.drivetrain.leftEncoder.getPosition() >= dist);
+  	}
 
-  protected void end(){
-  Robot.drivetrain.stop();
-  }
+ 	protected void end(){
+		Robot.drivetrain.stop();
+  	}
 
-protected void interrupted() {
-	Robot.drivetrain.stop();
-}
+	protected void interrupted() {
+		Robot.drivetrain.stop();
+	}
 } 

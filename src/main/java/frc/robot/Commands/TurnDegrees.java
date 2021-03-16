@@ -7,12 +7,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class TurnDegrees extends Command {
-  public TurnDegrees() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-  }
 
-  private double angle;
+  	private double angle;
 
 	public TurnDegrees(double a) {
 		requires(Robot.drivetrain);
@@ -28,13 +24,13 @@ public class TurnDegrees extends Command {
 
 	protected boolean isFinished(){
 		return true;
-}
+	}
 
-protected void end(){
-Robot.drivetrain.stop();
-}
+	protected void end(){
+		Robot.drivetrain.stop();
+	}
 
-protected void interrupted() {
-	Robot.drivetrain.stop();
-}
+	protected void interrupted() {
+		Robot.drivetrain.stop();
+	}
 }
