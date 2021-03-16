@@ -63,14 +63,14 @@ public class Drivetrain extends Subsystem {
   }
 
   public void driveStraight() {
-    if (frontRight.get() > frontLeft.get()) { 
+    if (rightEncoder.getPosition() > leftEncoder.getPosition()) { 
       frontRight.set(0.8);
       frontLeft.set(0.5);
       middleRight.set(0.8);
       middleLeft.set(0.5);
       rearRight.set(0.8);
       rearLeft.set(0.5);
-    } else if (frontRight.get() < frontLeft.get()) {
+    } else if (rightEncoder.getPosition() < leftEncoder.getPosition()) {
       frontRight.set(0.5);
       frontLeft.set(0.8);
       middleRight.set(0.5);
