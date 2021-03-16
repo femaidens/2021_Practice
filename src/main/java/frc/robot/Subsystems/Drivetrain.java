@@ -11,6 +11,9 @@ import com.revrobotics.CANSparkMax;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Joystick;
 
+import frc.robot.RobotMap;
+import frc.robot.Commands.*;
+
 
 /** Add your docs here. */
 public class Drivetrain extends Subsystem {
