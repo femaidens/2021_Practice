@@ -21,6 +21,8 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
+  public static DriveTrain DriveTrain;
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.

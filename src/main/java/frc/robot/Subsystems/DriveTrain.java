@@ -2,8 +2,9 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot;
+package frc.robot.Subsystems;
 
+import frc.robot.Robot;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -12,13 +13,16 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class DriveTrain extends SubsystemBase {
-  public CANSparkMax frontL = new CANSparkMax(RobotMap.frontLeftPort, MotorType.kBrushless);
-  public CANSparkMax backL = new CANSparkMax(RobotMap.backLeftPort, MotorType.kBrushless);
-  public CANSparkMax midL = new CANSparkMax(RobotMap.midLeftPort, MotorType.kBrushless);
+  public CANSparkMax frontL = new CANSparkMax(RobotMap.fLeftP, MotorType.kBrushless);
+  public CANSparkMax backL = new CANSparkMax(RobotMap.bLeftP, MotorType.kBrushless);
+  public CANSparkMax midL = new CANSparkMax(RobotMap.midLeftP, MotorType.kBrushless);
 
-  public CANSparkMax frontR = new CANSparkMax(RobotMap.frontRightPort, MotorType.kBrushless)
-  public CANSparkMax backR = new CANSparkMax(RobotMap.backRightPort, MotorType.kBrushless);
-  public CANSparkMax midR = new CANSparkMax(RobotMap.midRightPort, MotorType.kBrushless);
+  public CANSparkMax frontR = new CANSparkMax(RobotMap.fRightP, MotorType.kBrushless)
+  public CANSparkMax backR = new CANSparkMax(RobotMap.bRightP, MotorType.kBrushless);
+  public CANSparkMax midR = new CANSparkMax(RobotMap.midRightP, MotorType.kBrushless);
+
+  public CANEncoder leftEncoder = frontL.getEncoder();
+  public CANEncoder rightEncoder = backL.getEncoder();
   
   public AnalogGyro gyro = new AnalogGyro(RobotMap.gyroPort);
 
@@ -37,13 +41,31 @@ public class DriveTrain extends SubsystemBase {
 
   }
   
-  public void driveStraight(double speed){
-    frontL.set(speed);
-    backL.set(speed);
-    midL.set(speed);
-    frontR.set(speed);
-    backR.set(speed);
-    midR.set(speed);
+  public void driveStraight(){
+    if(leftEncoder.getPosition() > rightEncoder.getPosition()){
+      frontL.set(0.5);
+      midL.set(0.5);
+      backL.set(0.5);
+      frontR.set(0.7);
+      midR.set(0.7);
+      backR.set(0.7);
+    }
+    else if(leftEncoder.getPosition() < rightEncoder.getPosition()){
+      frontL.set(0.7);
+      midL.set(0.7);
+      backL.set(0.7);
+      frontR.set(0.5);
+      midR.set(0.5);
+      backR.set(0.5);
+    }
+    else{
+      frontL.set(0.7);
+      midL.set(0.7);
+      backL.set(0.7);
+      frontR.set(0.7);
+      midR.set(0.7);
+      backR.set(0.7);
+    }
   }
 
   public void turnDegrees(double angle){
