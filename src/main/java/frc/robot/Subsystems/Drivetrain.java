@@ -31,14 +31,18 @@ public class Drivetrain extends Subsystem {
 
   public AnalogGyro gyro = new AnalogGyro(RobotMap.gyroPort);
 
+  public Drivetrain() {
+
+  }
+
   @Override
   public void initDefaultCommand() {
     setDefaultCommand(new DriveTeleop());
   }
 
   public void driveTeleop() {
-    double leftJoy = OI.driverJoy.getRawAxis(0); // number
-    double rightJoy = OI.driverJoy.getRawAxis(1);
+    double leftJoy = OI.driverJoy.getRawAxis(1);
+    double rightJoy = OI.driverJoy.getRawAxis(5);
 
     frontRight.set(rightJoy);
     frontLeft.set(leftJoy);
