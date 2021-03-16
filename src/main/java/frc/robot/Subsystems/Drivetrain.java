@@ -44,7 +44,7 @@ public class Drivetrain extends Subsystem {
 
   public void driveTeleop(){
     double leftJoy = joy.getRawAxis(1);
-    double rightJoy = joy.getRawAxis(2);
+    double rightJoy = joy.getRawAxis(5);
     frontLeft.set(leftJoy);
     middleLeft.set(leftJoy);
     backLeft.set(leftJoy);
