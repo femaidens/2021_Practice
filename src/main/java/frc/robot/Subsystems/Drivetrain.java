@@ -2,11 +2,14 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot;
+package frc.robot.Subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.CANEncoder;
+import com.revrobotics.CANSparkMax;
+import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.Joystick;
 
 
 /** Add your docs here. */
@@ -38,7 +41,7 @@ public class Drivetrain extends Subsystem {
 
   public void driveTeleop(){
     double leftJoy = joy.getRawAxis(1);
-    double rightJoy = joy.gerRawAxis(2);
+    double rightJoy = joy.getRawAxis(2);
     frontLeft.set(leftJoy);
     middleLeft.set(leftJoy);
     backLeft.set(leftJoy);
@@ -48,7 +51,7 @@ public class Drivetrain extends Subsystem {
   }
 
   public void driveStraight(){
-    if(leftEncoder.get() > rightEncoder.get()){
+    if(leftEncoder.getPosition() > rightEncoder.getPosition()){
       frontLeft.set(0.5);
       middleLeft.set(0.5);
       backLeft.set(0.5);
@@ -56,7 +59,7 @@ public class Drivetrain extends Subsystem {
       middleRight.set(0.7);
       backRight.set(0.7);
     }
-    else if(leftEncoder.get() < rightEncoder.get()){
+    else if(leftEncoder.getPosition() < rightEncoder.getPosition()){
       frontLeft.set(0.7);
       middleLeft.set(0.7);
       backLeft.set(0.7);
