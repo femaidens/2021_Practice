@@ -8,15 +8,17 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANEncoder;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 
 public class DriveTrain extends Subsystem {
-	public CANSparkMax frontRight = new CANSparkMax(1, CANSparkMaxLowLevel.MotorType kBrushless);
-	public CANSparkMax frontLeft = new CANSparkMax(2, CANSparkMaxLowLevel.MotorType kBrushless);
-  public CANSparkMax middleLeft = new CANSparkMax(3, CANSparkMaxLowLevel.MotorType kBrushless);
-	public CANSparkMax rearRight = new CANSparkMax(4, CANSparkMaxLowLevel.MotorType kBrushless);
-	public CANSparkMax rearLeft = new CANSparkMax(5, CANSparkMaxLowLevel.MotorType kBrushless);
-	public CANSparkMax middleRight = new CANSparkMax(6, CANSparkMaxLowLevel.MotorType kBrushless);
+	public CANSparkMax frontRight = new CANSparkMax(RobotMap.frontRightPort, MotorType.kBrushless);
+	public CANSparkMax frontLeft = new CANSparkMax(RobotMap.frontLeftPort, MotorType.kBrushless);
+	public CANSparkMax middleRight = new CANSparkMax(RobotMap.midRightPort, MotorType.kBrushless);
+ 	public CANSparkMax middleLeft = new CANSparkMax(RobotMap.midLeftPort, MotorType.kBrushless);
+	public CANSparkMax rearRight = new CANSparkMax(RobotMap.rearRightPort, MotorType.kBrushless);
+	public CANSparkMax rearLeft = new CANSparkMax(RobotMap.rearLeftPort, MotorType.kBrushless);
+	
 
   public CANEncoder rightEncoder = frontRight.getEncoder();
   public CANEncoder leftEncoder = frontLeft.getEncoder();
@@ -34,11 +36,11 @@ public class DriveTrain extends Subsystem {
 		double leftJoy = OI.driveJoy.getRawAxis(1);
 		double rightJoy = OI.driveJoy.getRawAxis(5);
 		frontLeft.set(leftJoy);
-	  middleLeft.set(leftJoy);
-    rearLeft.set(leftJoy);
+	  	middleLeft.set(leftJoy);
+    	rearLeft.set(leftJoy);
 		frontRight.set(rightJoy);
-  	middleRight.set(rightJoy);
-    rearRight.set(rightJoy);
+  		middleRight.set(rightJoy);
+   	    rearRight.set(rightJoy);
 }
 
 public void auton(double speed){
