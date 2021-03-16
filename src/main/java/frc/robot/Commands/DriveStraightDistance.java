@@ -5,6 +5,8 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Subsystems.*;
+import frc.robot.Robot;
 
 public class DriveStraightDistance extends Command {
 
@@ -30,7 +32,7 @@ public class DriveStraightDistance extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.drivetrain.leftEncoder.get() >= distance && Robot.drivetrain.rightEncoder.get() >= distance;
+    return Robot.drivetrain.leftEncoder.getPosition() >= distance && Robot.drivetrain.rightEncoder.getPosition() >= distance;
   }
 
   // Called once after isFinished returns true
