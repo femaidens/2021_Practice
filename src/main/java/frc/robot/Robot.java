@@ -5,7 +5,6 @@
 package frc.robot;
 //hi im bianca
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Commands.*;
@@ -20,12 +19,15 @@ import frc.robot.Subsystems.*;
 public class Robot extends TimedRobot {
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
+  public static final String Lift = null;
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
 
-
+//Subsystems
   public static DriveTrain drivetrain; 
+  public static Lift lift;
+  
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
