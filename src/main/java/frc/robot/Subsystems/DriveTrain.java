@@ -17,7 +17,7 @@ public class DriveTrain extends SubsystemBase {
   public CANSparkMax backL = new CANSparkMax(RobotMap.bLeftP, MotorType.kBrushless);
   public CANSparkMax midL = new CANSparkMax(RobotMap.midLeftP, MotorType.kBrushless);
 
-  public CANSparkMax frontR = new CANSparkMax(RobotMap.fRightP, MotorType.kBrushless)
+  public CANSparkMax frontR = new CANSparkMax(RobotMap.fRightP, MotorType.kBrushless);
   public CANSparkMax backR = new CANSparkMax(RobotMap.bRightP, MotorType.kBrushless);
   public CANSparkMax midR = new CANSparkMax(RobotMap.midRightP, MotorType.kBrushless);
 

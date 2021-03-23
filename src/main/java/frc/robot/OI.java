@@ -8,5 +8,5 @@ import edu.wpi.first.wpilibj.Joystick;
 /** Add your docs here. */
 public class OI {
     public static Joystick driveJoy = new Joystick(RobotMap.driveP);
-	public static Joystick operJoy = new Joystick(RobotMap.operP);
+    public static Joystick operJoy = new Joystick(RobotMap.operP);
 }
