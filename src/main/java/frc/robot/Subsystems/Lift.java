@@ -76,6 +76,7 @@ public class Lift extends Subsystem {
         frontLeftLift.set(-0.7);
         backLeftLift.set(-0.7);
       }
+      stop();
       currentLevel = 2;
     }
     else if(currentLevel == 2){
@@ -85,6 +86,7 @@ public class Lift extends Subsystem {
         frontLeftLift.set(-0.7);
         backLeftLift.set(-0.7);
       }
+      stop();
       currentLevel = 3;
     }
   }
@@ -99,6 +101,7 @@ public class Lift extends Subsystem {
         frontLeftLift.set(0.7);
         backLeftLift.set(0.7);
       }
+      stop();
       currentLevel = 2;
     }
     else if(currentLevel == 2){
@@ -108,6 +111,7 @@ public class Lift extends Subsystem {
         frontLeftLift.set(0.7);
         backLeftLift.set(0.7);
       }
+      stop();
       currentLevel = 1;
     }
   }
