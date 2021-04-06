@@ -28,4 +28,17 @@ public class RobotMap {
     public static int gyroP = 17;
     public static int driveP = 18;
     public static int operP = 19;
+
+    public static int cargoLeftPort = 20;
+    public static int cargoRightPort = 21;
+
+    public static int cargoPistonPort1 = 22;
+    public static int cargoPistonPort2 = 23;
+    
+    public static int hatchPerimeterPort1 = 24;
+    public static int hatchPerimeterPort2 = 25;
+
+    public static int hatchInOutPort1 = 26;
+    public static int hatchInOutPort2 = 27;
+
 }

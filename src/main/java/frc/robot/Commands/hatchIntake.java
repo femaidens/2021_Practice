@@ -3,15 +3,15 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.Commands;
-import frc.robot.Subsystems.*;
 
-import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
-public class switchTeleop extends Command {
-
-  public switchTeleop() {
-    requires(Robot.Lift);
+public class hatchIntake extends Command {
+  public hatchIntake() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
+    requires(Robot.Hatch);
   }
 
   // Called just before this Command runs the first time
@@ -21,7 +21,7 @@ public class switchTeleop extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Lift.teleopShift();
+    Robot.Hatch.intakeGamePiece();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -32,14 +32,12 @@ public class switchTeleop extends Command {
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {
-    Robot.Lift.stop();
-  }
+  protected void end() {}
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.Lift.stop();
+    Robot.Hatch.stop();
   }
 }

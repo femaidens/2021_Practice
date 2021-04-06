@@ -8,6 +8,8 @@ import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.PWMSparkMax;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
@@ -22,12 +24,17 @@ public class Lift extends Subsystem {
   CANSparkMax right1 = new CANSparkMax(RobotMap.right1Port, MotorType.kBrushless);
   CANSparkMax right2 = new CANSparkMax(RobotMap.right2Port, MotorType.kBrushless);
 
-  public CANEncoder encoder = left1.getEncoder();
+  public CANEncoder encoder1 = left1.getEncoder();
+  public CANEncoder encoder2 = right1.getEncoder();
 
   DigitalInput limitTop1 = new DigitalInput(RobotMap.limPortT1);
   DigitalInput limitTop2 = new DigitalInput(RobotMap.limPortT2);
   DigitalInput limitBottom1 = new DigitalInput(RobotMap.limPortB1);
   DigitalInput limitBottom2 = new DigitalInput(RobotMap.limPortB2);
+
+  JoystickButton upButton = new JoystickButton(OI.operJoy, RobotMap.upButtonPort); 
+  JoystickButton downButton = new JoystickButton(OI.operJoy, RobotMap.downButtonPort); 
+
 
   // encoders
   // each level = set amount of distance
@@ -44,19 +51,23 @@ public class Lift extends Subsystem {
   }
 
   public void teleopShift(){
-    if(OI.Joystick.upButton.getYButtonPressed()){
-      shiftLevel(1);
-    } 
-    else if (OI.Joystick.downButton.getAButtonPressed()){
-      shiftLevel(-1);
+    while(!upperLimits() && !lowerLimits()){
+      double speed = OI.operJoy.getRawAxis(1);
+    
+      left1.set(speed);
+      left2.set(speed);
+      right1.set(speed);
+      right2.set(speed);
     }
   }
 
+  
+  
   public void shiftLevel(int num){
     int d = levelDistance * num;
 
     if(d > 0){
-      while(encoder.getPosition() != d && !upperLimits()){
+      while(encoder1.getPosition() >= d && encoder2.getPosition() >= d && !upperLimits()){
         left1.set(1.0);
         left2.set(1.0);
         right1.set(-1.0);
@@ -66,7 +77,7 @@ public class Lift extends Subsystem {
     }
 
     else if(d < 0){
-      while(encoder.getPosition() != d && !lowerLimits()){
+      while(encoder1.getPosition() >= d && encoder2.getPosition() >= d && !lowerLimits()){
         left1.set(-1.0);
         left2.set(-1.0);
         right1.set(1.0);

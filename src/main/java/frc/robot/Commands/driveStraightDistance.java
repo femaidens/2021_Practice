@@ -4,6 +4,8 @@
 
 package frc.robot.Commands;
 
+import frc.robot.Robot;
+import frc.robot.Robot.*;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class driveStraightDistance extends Command {

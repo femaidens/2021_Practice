@@ -5,6 +5,10 @@
 package frc.robot.Subsystems;
 
 import frc.robot.Robot;
+import frc.robot.RobotMap;
+import frc.robot.OI;
+
+import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -24,13 +28,13 @@ public class DriveTrain extends SubsystemBase {
   public CANEncoder leftEncoder = frontL.getEncoder();
   public CANEncoder rightEncoder = backL.getEncoder();
   
-  public AnalogGyro gyro = new AnalogGyro(RobotMap.gyroPort);
+  public AnalogGyro gyro = new AnalogGyro(RobotMap.gyroP);
 
   public DriveTrain() {}
 
   public void driveTeleop(){
-    double leftSpeed = OI.joytick.getRawAxis(1);
-    double rightSpeed = OI.joystick.getRawAxis(5);
+    double leftSpeed = OI.driveJoy.getRawAxis(1);
+    double rightSpeed = OI.driveJoy.getRawAxis(5);
     
     frontL.set(leftSpeed);
     backL.set(leftSpeed);
@@ -73,7 +77,7 @@ public class DriveTrain extends SubsystemBase {
       angle = -(360-angle);
     }
 
-    while(gyro.getAngle() = angle){
+    while(gyro.getAngle() == angle){
       if (angle < 0) {
         frontL.set(-1.0);
         backL.set(-1.0);
