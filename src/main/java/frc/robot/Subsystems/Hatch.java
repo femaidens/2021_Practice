@@ -22,7 +22,7 @@ public class Hatch extends Subsystem {
   }
 
   public void moveHatch(){
-    if(hatch1Solenoid.get() == DoubleSolenoid.Value.kOff || hatch1Solenoid.get() == DoubleSolenoid.Value.kReverse){
+    if(hatch1Solenoid.get() != DoubleSolenoid.Value.kForward){
       hatch1Solenoid.set(DoubleSolenoid.Value.kForward);
     }
     else{
@@ -31,7 +31,7 @@ public class Hatch extends Subsystem {
   }
 
   public void movePiece(){
-    if(hatch2Solenoid.get() == DoubleSolenoid.Value.kOff || hatch2Solenoid.get() == DoubleSolenoid.Value.kReverse){
+    if(hatch2Solenoid.get() != DoubleSolenoid.Value.kForward){
       hatch2Solenoid.set(DoubleSolenoid.Value.kForward);
     }
     else{

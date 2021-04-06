@@ -25,8 +25,8 @@ public class OI {
     public void bindButtons(){
         upLiftButton.whenPressed(new UpLift());
         downLiftButton.whenPressed(new DownLift());
-        intakeButton.whenPressed(new Intake());
-        outtakeButton.whenPressed(new Outtake());
+        intakeButton.whileHeld(new Intake());
+        outtakeButton.whileHeld(new Outtake());
         moveCargoButton.whenPressed(new MoveCargo());
         moveHatchButton.whenPressed(new MoveHatch());
         getPieceButton.whenPressed(new GetPiece());

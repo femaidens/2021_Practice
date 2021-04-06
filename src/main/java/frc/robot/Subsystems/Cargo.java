@@ -42,7 +42,7 @@ public class Cargo extends Subsystem {
   }
 
   public void moveCargo(){
-    if(cargoSolenoid.get() == DoubleSolenoid.Value.kOff || cargoSolenoid.get() == DoubleSolenoid.Value.kReverse){
+    if(cargoSolenoid.get() != DoubleSolenoid.Value.kForward){
       cargoSolenoid.set(DoubleSolenoid.Value.kForward);
     }
     else{
