@@ -19,6 +19,22 @@ public class RobotMap {
     public static int liftRight2Port = 9;
     public static int liftLeft1Port = 10;
     public static int liftLeft2Port = 11;
+    public static int topRightPort = 12;
+    public static int bottomRightPort = 13;
+    public static int topLeftPort = 14;
+    public static int bottomLeftPort = 15;
+
+    //cargo
+    public static int rightCargoPort = 16;
+    public static int leftCargoPort = 17;
+    public static int cargoPistonPort1 = 18;
+    public static int cargoPistonPort2 = 19;
+
+    //hatch
+    public static int hatchPistonPort1 = 20;
+    public static int hatchPistonPort2 = 21;
+    public static int intakePistonPort1 = 22;
+    public static int intakePistonPort2 = 23;
 
 
 }

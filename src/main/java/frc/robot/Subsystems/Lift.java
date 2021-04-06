@@ -27,10 +27,10 @@ public class Lift extends Subsystem {
   public CANEncoder liftEncoder = liftRight1.getEncoder();
   public CANEncoder liftEncoder2 = liftLeft1.getEncoder();
 
-  public DigitalInput topRight = new DigitalInput(1);
-  public DigitalInput bottomRight = new DigitalInput(2);
-  public DigitalInput topLeft = new DigitalInput(3);
-  public DigitalInput bottomLeft = new DigitalInput(4);
+  public DigitalInput topRight = new DigitalInput(RobotMap.topRightPort);
+  public DigitalInput bottomRight = new DigitalInput(RobotMap.bottomRightPort);
+  public DigitalInput topLeft = new DigitalInput(RobotMap.topLeftPort);
+  public DigitalInput bottomLeft = new DigitalInput(RobotMap.bottomLeftPort);
 
   private double level1;
   private double level2;
