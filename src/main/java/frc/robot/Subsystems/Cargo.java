@@ -4,6 +4,7 @@
 
 package frc.robot.Subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
@@ -28,17 +29,17 @@ public void cargoRetract(){
 }
 
 public void cargoIntake(){
-  inMotor.set(TalonSRXControlMode.PercentOutput, 0.8);
-  outMotor.set(TalonSRXControlMode.PercentOutput, -0.8);
+  inMotor.set(ControlMode.PercentOutput, 0.8);
+  outMotor.set(ControlMode.PercentOutput, -0.8);
 }
 
 public void cargoOuttake(){
-  inMotor.set(TalonSRXControlMode.PercentOutput, -0.8);
-  outMotor.set(TalonSRXControlMode.PercentOutput, 0.8);
+  inMotor.set(ControlMode.PercentOutput, -0.8);
+  outMotor.set(ControlMode.PercentOutput, 0.8);
 }
 public void stop(){
-  inMotor.set(TalonSRXControlMode.PercentOutput, 0);
-  outMotor.set(TalonSRXControlMode.PercentOutput, 0);
+  inMotor.set(ControlMode.PercentOutput, 0);
+  outMotor.set(ControlMode.PercentOutput, 0);
 }
 
 @Override
