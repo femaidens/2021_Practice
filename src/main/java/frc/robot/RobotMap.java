@@ -27,4 +27,21 @@ public class RobotMap {
 	public static int topLimitSwitchLeftPort=16;
 	public static int botLimitSwitchRightPort=17;
 	public static int botLimitSwitchLeftPort=18;
+
+	//cargomotor ports
+	public static int cargoInPort = 19;
+	public static int cargoOutPort = 20;
+	//piston ports
+	//cargopiston
+	public static int pistonPort1 = 21;
+	public static int pistonPort2 = 22;
+	//hatchpistons
+	public static int pistonPort3 = 23;
+	public static int pistonPort4 = 24;
+	public static int pistonPort5 = 25;
+	public static int pistonPort6 = 26;
+
+	
+
+
 }

@@ -27,6 +27,8 @@ public class Robot extends TimedRobot {
 //Subsystems
   public static DriveTrain drivetrain; 
   public static Lift lift;
+  public static Cargo cargo;
+  public static Hatch hatch;
   
   /**
    * This function is run when the robot is first started up and should be used for any
