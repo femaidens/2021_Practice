@@ -29,4 +29,17 @@ public class RobotMap {
     public static int rightLimitBotPort = 15;
     public static int leftLimitTopPort = 16; 
     public static int leftLimitBotPort = 17;
+
+    //Cargo
+    public static int cargoRightPort = 18;
+    public static int cargoLeftPort = 19;
+    public static int cargoForwardPort = 20;
+    public static int cargoReversePort = 21;
+
+    //Hatch
+    public static int hatch1ForwardPort = 22;
+    public static int hatch1ReversePort = 23;
+    public static int hatch2ForwardPort = 24;
+    public static int hatch2ReversePort = 25;
+
 }

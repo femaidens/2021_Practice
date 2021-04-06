@@ -25,6 +25,8 @@ public class Robot extends TimedRobot {
 
   public static Drivetrain drivetrain;
   public static Lift lift;
+  public static Cargo cargo;
+  public static Hatch hatch;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -37,6 +39,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto choices", m_chooser);
     drivetrain = new Drivetrain();
     lift = new Lift();
+    cargo = new Cargo();
+    hatch = new Hatch();
   }
 
   /**
