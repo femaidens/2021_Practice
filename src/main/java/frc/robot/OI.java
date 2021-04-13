@@ -35,4 +35,19 @@ public class OI {
 
     driveY.whenPressed(new Robot.Commands.hatchExtend());
     driveX.whenPressed(new Robot.Commands.hatchRetract());
+
+    // Climb
+
+    public static JoystickButton operUp = new JoystickButton(operJoy, 12); //whenPressed
+    public static JoystickButton operDown = new JoystickButton(operJoy, 15);
+    public static JoystickButton operLeft = new JoystickButton(operJoy, 13);
+    public static JoystickButton operRight = new JoystickButton(operJoy, 14);
+
+    operUp.whenPressed(new Robot.Commands.climbUpFront());
+    operLeft.whenPressed(new Robot.Commands.climbUpBack());
+
+    operDown.whenPressed(new Robot.Commands.climbDownFront());
+    operRight.whenPressed(new Robot.Commands.climbDownBack());
+
+    
 }

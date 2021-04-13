@@ -19,6 +19,7 @@ public class RobotMap {
     public static int upButtonPort = 9;
     public static int downButtonPort = 10;
 
+    // DRIVETRAIN
     public static int fLeftP = 11;
     public static int midLeftP = 12;
     public static int bLeftP = 13;
@@ -29,16 +30,34 @@ public class RobotMap {
     public static int driveP = 18;
     public static int operP = 19;
 
+    //CARGO
     public static int cargoLeftPort = 20;
     public static int cargoRightPort = 21;
 
     public static int cargoPistonPort1 = 22;
     public static int cargoPistonPort2 = 23;
     
+    // HATCH
     public static int hatchPerimeterPort1 = 24;
     public static int hatchPerimeterPort2 = 25;
 
     public static int hatchInOutPort1 = 26;
     public static int hatchInOutPort2 = 27;
+
+    // CLIMB
+    public static int leftFrontPort1 = 28;
+    public static int leftFrontPort2 = 29;
+
+    public static int leftBackPort1 = 30;
+    public static int leftBackPort2 = 31;
+
+    public static int rightFrontPort1 = 32;
+    public static int rightFrontPort2 = 33;
+
+    public static int rightBackPort1 = 34;
+    public static int rightBackPort2 = 35;
+
+    public static int pingChannel = 36;
+    public static int echoChannel = 37;
 
 }
