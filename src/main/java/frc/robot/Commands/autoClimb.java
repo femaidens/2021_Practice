@@ -32,21 +32,21 @@ public class autoClimb extends Command {
 
     Robot.Climb.raiseFront();
     while(Robot.Climb.sensorVal()) { //limit switch?
-      Robot.DriveTrain.rearRight.set(0.8);
-      Robot.DriveTrain.rearLeft.set(0.8);
+      Robot.DriveTrain.backR.set(0.8);
+      Robot.DriveTrain.backL.set(0.8);
     }
     Robot.Climb.raiseBack();
 
     while(Robot.Climb.sensorVal()) {
-      Robot.DriveTrain.frontRight.set(0.8);
-      Robot.DriveTrain.frontLeft.set(0.8);
+      Robot.DriveTrain.frontR.set(0.8);
+      Robot.DriveTrain.frontL.set(0.8);
     }
 
     Robot.Climb.lowerFront();
 
     while(Robot.Climb.sensorVal()) {
-      Robot.DriveTrain.frontRight.set(0.8);
-      Robot.DriveTrain.frontLeft.set(0.8);
+      Robot.DriveTrain.frontR.set(0.8);
+      Robot.DriveTrain.frontL.set(0.8);
     }
 
     Robot.Climb.lowerBack();
