@@ -5,14 +5,12 @@
 package frc.robot.Subsystems;
 
 import com.revrobotics.CANEncoder;
-import com.revrobotics.CANError;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.OI;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.Commands.*;
 
@@ -80,7 +78,7 @@ public class Lift extends Subsystem {
       currentLevel = 2;
     }
     else if(currentLevel == 2){
-      while(liftLeftEnc.getPosition()-currentLeftEnc < level23 && liftRightEnc.getPosition()-currentRightEnc < level23 && !rightLimitTop.get() && !leftLimitTop.get()){
+      while(liftLeftEnc.getPosition()-currentLeftEnc < level23 && liftRightEnc.getPosition()-currentRightEnc < level23 && !stopLimit()){
         frontRightLift.set(0.7);
         backRightLift.set(0.7);
         frontLeftLift.set(-0.7);
@@ -105,7 +103,7 @@ public class Lift extends Subsystem {
       currentLevel = 2;
     }
     else if(currentLevel == 2){
-      while(currentLeftEnc-liftLeftEnc.getPosition() < level12 && currentRightEnc-liftRightEnc.getPosition() < level12 && !rightLimitBot.get() && !leftLimitBot.get()){
+      while(currentLeftEnc-liftLeftEnc.getPosition() < level12 && currentRightEnc-liftRightEnc.getPosition() < level12 && !stopLimit()){
         frontRightLift.set(-0.7);
         backRightLift.set(-0.7);
         frontLeftLift.set(0.7);
@@ -121,5 +119,9 @@ public class Lift extends Subsystem {
     backRightLift.set(0.0);
     frontLeftLift.set(0.0);
     backLeftLift.set(0.0);
+  }
+
+  public boolean stopLimit(){
+    return (rightLimitTop.get() || rightLimitBot.get() || leftLimitTop.get() || leftLimitBot.get());
   }
 }

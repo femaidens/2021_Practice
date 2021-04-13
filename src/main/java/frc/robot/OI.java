@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.CommandGroup.AutoClimb;
 import frc.robot.Commands.*;
-import frc.robot.Subsystems.*;
 
 /** Add your docs here. */
 public class OI {
