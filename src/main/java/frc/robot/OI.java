@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.CommandGroup.AutoClimb;
 import frc.robot.Commands.*;
 import frc.robot.Subsystems.*;
 
@@ -21,6 +22,7 @@ public class OI {
     public static Button moveCargoButton = new JoystickButton(driveJoy, 0);
     public static Button moveHatchButton = new JoystickButton(driveJoy, 2);
     public static Button getPieceButton = new JoystickButton(driveJoy, 3);
+    public static Button climbButton = new JoystickButton(driveJoy, 1);
     
     public void bindButtons(){
         upLiftButton.whenPressed(new UpLift());
@@ -30,6 +32,7 @@ public class OI {
         moveCargoButton.whenPressed(new MoveCargo());
         moveHatchButton.whenPressed(new MoveHatch());
         getPieceButton.whenPressed(new GetPiece());
+        climbButton.whenPressed(new AutoClimb());
 
     }
 }

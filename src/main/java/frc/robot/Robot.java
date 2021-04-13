@@ -34,12 +34,6 @@ public class Robot extends TimedRobot {
   public static Hatch hatch;
   public static Climb climb;
 
-  public static Ultrasonic ultraClimb;
-  public static double climbDist = 10; //tentative distance to start climbing
-
-  //climb command group
-  Command autoClimb;
-
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -54,9 +48,6 @@ public class Robot extends TimedRobot {
     cargo = new Cargo();
     hatch = new Hatch();
     climb = new Climb();
-    ultraClimb = new Ultrasonic(RobotMap.ultra1Port, RobotMap.ultra2Port);
-
-    autoClimb = new AutoClimb();
   }
 
   /**
@@ -111,11 +102,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    if (ultraClimb.getRangeInches() <= climbDist) {
-      //drivetrain.stop(); <-- not sure if i should stop the whole robot 
-      //before starting to climb cuz driver might wanna readjust
-      autoClimb.start();
-    }
   }
 
   /** This function is called once when the robot is disabled. */
