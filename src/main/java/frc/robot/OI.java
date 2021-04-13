@@ -19,21 +19,30 @@ public class OI {
     public static Button retractHatch = new JoystickButton(operJoy, 4);
     public static Button extendIntake = new JoystickButton(operJoy, 5);
     public static Button retractIntake = new JoystickButton(operJoy, 5);
+    public static Button climbAuto = new JoystickButton(driverJoy, 3);
 
     public OI() {
 
     }
 
     public static void bindButtons() {
+        //lift
         liftUp.whenPressed(new LiftUp());
         liftDown.whenPressed(new LiftDown());
+
+        //cargo
         extendCargo.toggleWhenPressed(new ExtendCargo()); //extends when pressed, retracts when pressed
         retractCargo.toggleWhenPressed(new RetractCargo());
         intake.whileHeld(new IntakeCargo());
         outtake.whileHeld(new OuttakeCargo());
+
+        //hatch
         extendHatch.toggleWhenPressed(new ExtendHatch());
         retractHatch.toggleWhenPressed(new RetractHatch());
         extendIntake.toggleWhenPressed(new ExtendIntake());
         retractIntake.toggleWhenPressed(new RetractIntake());
+
+        //climb
+        climbAuto.whenPressed(new ClimbAuto());
     }
 }

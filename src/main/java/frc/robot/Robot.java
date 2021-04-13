@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
   public static Lift lift;
   public static Cargo cargo;
   public static Hatch hatch;
+  public static Climb climb;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -45,6 +46,7 @@ public class Robot extends TimedRobot {
     lift = new Lift();
     cargo = new Cargo();
     hatch = new Hatch();
+    climb = new Climb();
   }
 
   /**

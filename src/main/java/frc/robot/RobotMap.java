@@ -36,5 +36,17 @@ public class RobotMap {
     public static int intakePistonPort1 = 22;
     public static int intakePistonPort2 = 23;
 
+    //climb
+    public static int front1Port1 = 24;
+    public static int front1Port2 = 25;
+    public static int front2Port1 = 26;
+    public static int front2Port2 = 27;
+    public static int rear1Port1 = 28;
+    public static int rear1Port2 = 29;
+    public static int rear2Port1 = 30;
+    public static int rear2Port2 = 31;
+    public static int ultrasonicPort1 = 32;
+    public static int ultrasonicPort2 = 33;
+
 
 }
