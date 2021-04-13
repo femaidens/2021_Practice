@@ -46,8 +46,8 @@ public class Climb extends Subsystem {
     back2Climb.set(DoubleSolenoid.Value.kReverse);
   }
 
-  public void getDistance(){
+  /*public void getDistance(){
 
-  }
+  }*/
 
 }
