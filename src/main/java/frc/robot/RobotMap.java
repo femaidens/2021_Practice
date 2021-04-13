@@ -42,4 +42,16 @@ public class RobotMap {
     public static int hatch2ForwardPort = 24;
     public static int hatch2ReversePort = 25;
 
+    //climb
+    public static int front1ForwardPort = 26;
+    public static int front1ReversePort = 27;
+    public static int front2ForwardPort = 28;
+    public static int front2ReversePort = 29;
+    public static int back1ForwardPort = 30;
+    public static int back1ReversePort = 31;
+    public static int back2ForwardPort = 32;
+    public static int back2ReversePort = 33;
+    public static int ultra1Port = 34;
+    public static int ultra2Port = 35;
+
 }

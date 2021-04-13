@@ -8,6 +8,10 @@ import frc.robot.Subsystems.*;
 //Kathryn pushed here
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -27,6 +31,13 @@ public class Robot extends TimedRobot {
   public static Lift lift;
   public static Cargo cargo;
   public static Hatch hatch;
+  public static Climb climb;
+
+  public static Ultrasonic ultraClimb;
+  public static double climbDist = 10; //tentative distance to start climbing
+
+  //climb command group
+  Command autoClimb;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -41,6 +52,10 @@ public class Robot extends TimedRobot {
     lift = new Lift();
     cargo = new Cargo();
     hatch = new Hatch();
+    climb = new Climb();
+    ultraClimb = new Ultrasonic(RobotMap.ultra1Port, RobotMap.ultra2Port);
+
+    autoClimb = new AutoClimb();
   }
 
   /**
@@ -73,6 +88,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
+    Scheduler.getInstance().run();
     switch (m_autoSelected) {
       case kCustomAuto:
         // Put custom auto code here
@@ -86,11 +102,19 @@ public class Robot extends TimedRobot {
 
   /** This function is called once when teleop is enabled. */
   @Override
-  public void teleopInit() {}
+  public void teleopInit() {
+  }
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+    Scheduler.getInstance().run();
+    if (ultraClimb.getRangeInches() <= climbDist) {
+      //drivetrain.stop(); <-- not sure if i should stop the whole robot 
+      //before starting to climb cuz driver might wanna readjust
+      autoClimb.start();
+    }
+  }
 
   /** This function is called once when the robot is disabled. */
   @Override
