@@ -30,24 +30,33 @@ public class autoClimb extends Command {
   @Override
   protected void execute() {
 
-    if(Robot.Climb.sensorVal()){
-      if(d){
-        Robot.Climb.raiseBack();
-        Robot.Climb.raiseFront();
-      } else {
-        Robot.Commands.driveStraightDistance(0.5*x);
-        Robot.Subsystems.Climb.lowerFront();
-        Robot.Commands.driveStraightDistance(0.5*x);
-        Robot.Subsystems.Climb.lowerBack();
-      }
+    Robot.Climb.raiseFront();
+    while(Robot.Climb.sensorVal()) { //limit switch?
+      Robot.DriveTrain.rearRight.set(0.8);
+      Robot.DriveTrain.rearLeft.set(0.8);
     }
+    Robot.Climb.raiseBack();
+
+    while(Robot.Climb.sensorVal()) {
+      Robot.DriveTrain.frontRight.set(0.8);
+      Robot.DriveTrain.frontLeft.set(0.8);
+    }
+
+    Robot.Climb.lowerFront();
+
+    while(Robot.Climb.sensorVal()) {
+      Robot.DriveTrain.frontRight.set(0.8);
+      Robot.DriveTrain.frontLeft.set(0.8);
+    }
+
+    Robot.Climb.lowerBack();
 
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
