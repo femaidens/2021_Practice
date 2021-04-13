@@ -24,7 +24,7 @@ public class ClimbAuto extends Command {
   @Override
   protected void execute() {
     Robot.climb.extendFront();
-    while(Robot.climb.ultra.getRangeInches() >= 0.5) { //limit switch?
+    while(Robot.climb.ultra.getRangeInches() >= 0.5) {
       Robot.drivetrain.rearRight.set(0.8);
       Robot.drivetrain.rearLeft.set(0.8);
     }
