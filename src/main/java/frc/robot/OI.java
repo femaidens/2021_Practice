@@ -10,6 +10,7 @@ import frc.robot.Commands.OuttakeCargo;
 import frc.robot.Commands.ControlCargoPiston;
 import frc.robot.Commands.ControlHatchPerimeterPiston;
 import frc.robot.Commands.ControlHatchInOutPiston;
+import frc.robot.CommandGroups.ClimbPlatform;
 
 public class OI {
 
@@ -27,6 +28,8 @@ public class OI {
     public static Button toggleHatchPerimPist = new JoystickButton(operJoy, 3);
     public static Button toggleHatchInOutPist = new JoystickButton(operJoy, 4);
 
+    public static Button climbPlat = new JoystickButton(driveJoy,5);
+
 
 
     public static void bindButtons(){
@@ -40,7 +43,8 @@ public class OI {
         //Hatch
         toggleHatchPerimPist.toggleWhenPressed(new ControlHatchPerimeterPiston());
         toggleHatchInOutPist.toggleWhenPressed(new ControlHatchInOutPiston());
-
+        //climb
+        climbPlat.whenPressed(new ClimbPlatform());
     }
         
 

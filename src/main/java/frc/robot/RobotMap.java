@@ -1,6 +1,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DigitalOutput;
 
 public class RobotMap {
 
@@ -41,7 +43,19 @@ public class RobotMap {
 	public static int pistonPort5 = 25;
 	public static int pistonPort6 = 26;
 
-	
+	//climb pistons
+	public static int climbPort1 = 27;
+	public static int climbPort2 = 28;
+	public static int climbPort3 = 29;
+	public static int climbPort4 = 30;
+	public static int climbPort5 = 31;
+	public static int climbPort6 = 32;
+	public static int climbPort7 = 33;
+	public static int climbPort8 = 34;
+
+
+	public static int climbSensorChannel1;
+	public static int climbSensorChannel2;
 
 
 }
