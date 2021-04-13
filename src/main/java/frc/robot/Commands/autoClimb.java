@@ -36,12 +36,6 @@ public class autoClimb extends Command {
       Robot.DriveTrain.backL.set(0.8);
     }
     Robot.Climb.raiseBack();
-
-    while(Robot.Climb.sensorVal()) {
-      Robot.DriveTrain.frontR.set(0.8);
-      Robot.DriveTrain.frontL.set(0.8);
-    }
-
     Robot.Climb.lowerFront();
 
     while(Robot.Climb.sensorVal()) {
@@ -50,6 +44,11 @@ public class autoClimb extends Command {
     }
 
     Robot.Climb.lowerBack();
+
+    while(Robot.Climb.sensorVal()) {
+      Robot.DriveTrain.frontR.set(0.8);
+      Robot.DriveTrain.frontL.set(0.8);
+    }
 
   }
 
@@ -61,7 +60,9 @@ public class autoClimb extends Command {
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {}
+  protected void end() {
+    Robot.Subsystems.Climb.stop();
+  }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
