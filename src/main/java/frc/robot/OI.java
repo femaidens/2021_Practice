@@ -20,6 +20,7 @@ public class OI {
     //lift buttons
     public static Button switchLiftLevelNum = new JoystickButton(operJoy, 1);
     public static Button activateAutoLift = new JoystickButton(operJoy, 2);
+    
     //cargo buttons
     public static Button intakeCargo = new JoystickButton(driveJoy, 1);
     public static Button outtakeCargo = new JoystickButton(driveJoy, 2);

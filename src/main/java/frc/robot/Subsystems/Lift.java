@@ -7,6 +7,7 @@ package frc.robot.Subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.OI;
 import frc.robot.RobotMap;
+import frc.robot.Commands.ManualLiftLevel;
 
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
@@ -39,6 +40,7 @@ public class Lift extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
+    setDefaultCommand(new ManualLiftLevel());
   }
 
   public Lift(){
@@ -55,13 +57,19 @@ public class Lift extends Subsystem {
   }
 
   public void moveLevels(){
+
+    double posR1 = rOneEncoder.getPosition();
+    double posR2 = rTwoEncoder.getPosition();
+    double posL1 = lOneEncoder.getPosition();
+    double posL2 = lTwoEncoder.getPosition();
+
     //FOR MOVING UP LEVELS
     if(destLvl-curLvl > 0){
       double travelDistance = (destLvl-curLvl) * distBetweenLevels;
       //assuming to go up, right motors take pos values and left motors take neg values
       //checks that for all encoders you are less than the distance to be travelled AND that u don't hit upper limits
-      while((rOneEncoder.getPosition() < travelDistance && rTwoEncoder.getPosition() < travelDistance && !topRightLimit.get()) 
-      && (lOneEncoder.getPosition()< -travelDistance && lTwoEncoder.getPosition()<-travelDistance && !topLeftLimit.get())){
+      while(((rOneEncoder.getPosition() - posR1) < travelDistance && (rTwoEncoder.getPosition() - posR2) < travelDistance && !topRightLimit.get()) 
+      && ((lOneEncoder.getPosition() - posL1) < -travelDistance && (lTwoEncoder.getPosition() - posL2) <-travelDistance && !topLeftLimit.get())){
         rightOne.set(0.5);
         rightTwo.set(0.5);
         leftOne.set(-0.5);
@@ -74,8 +82,8 @@ public class Lift extends Subsystem {
       double travelDistance = (destLvl-curLvl) * distBetweenLevels;
       //assuming to go up, right motors take pos values and left motors take neg values
       //checks that for all encoders you are less than the distance to be travelled AND that u don't hit upper limits
-      while((rOneEncoder.getPosition() < travelDistance && rTwoEncoder.getPosition() < travelDistance && !botRightLimit.get()) 
-      && (lOneEncoder.getPosition()< -travelDistance && lTwoEncoder.getPosition()<-travelDistance && !botLeftLimit.get())){
+      while(((rOneEncoder.getPosition() - posR1) < travelDistance && (rTwoEncoder.getPosition() - posR2) < travelDistance && !botRightLimit.get()) 
+      && ((lOneEncoder.getPosition() - posL1) < -travelDistance && (lTwoEncoder.getPosition() - posL2) <-travelDistance && !botLeftLimit.get())){
         rightOne.set(-0.5);
         rightTwo.set(-0.5);
         leftOne.set(0.5);
