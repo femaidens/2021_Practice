@@ -31,7 +31,7 @@ public class autoClimb extends Command {
   protected void execute() {
 
     Robot.Climb.raiseFront();
-    while(Robot.Climb.sensorVal()) { //limit switch?
+    while(Robot.Climb.sensorVal()) {
       Robot.DriveTrain.backR.set(0.8);
       Robot.DriveTrain.backL.set(0.8);
     }
