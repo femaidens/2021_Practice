@@ -25,6 +25,11 @@ public class Robot extends TimedRobot {
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
   public static Subsystem DriveTrain;
+  public static Subsystem Hatch;
+  public static Subsystem Climb;
+  public static Subsystem Lift;
+  public static Subsystem Cargo;
+
 
   /**
    * This function is run when the robot is first started up and should be used for any

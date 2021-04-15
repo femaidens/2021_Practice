@@ -32,10 +32,6 @@ public class Lift extends Subsystem {
   DigitalInput limitBottom1 = new DigitalInput(RobotMap.limPortB1);
   DigitalInput limitBottom2 = new DigitalInput(RobotMap.limPortB2);
 
-  JoystickButton upButton = new JoystickButton(OI.operJoy, RobotMap.upButtonPort); 
-  JoystickButton downButton = new JoystickButton(OI.operJoy, RobotMap.downButtonPort); 
-
-
   // encoders
   // each level = set amount of distance
   // run for that distance (each time you add distance, change value of currentLevel accordingly)
@@ -62,12 +58,11 @@ public class Lift extends Subsystem {
   }
 
   
-  
   public void shiftLevel(int num){
     int d = levelDistance * num;
 
     if(d > 0){
-      while(encoder1.getPosition() >= d && encoder2.getPosition() >= d && !upperLimits()){
+      while(encoder1.getPosition() < d && encoder2.getPosition() < d && !upperLimits()){
         left1.set(1.0);
         left2.set(1.0);
         right1.set(-1.0);
@@ -77,7 +72,7 @@ public class Lift extends Subsystem {
     }
 
     else if(d < 0){
-      while(encoder1.getPosition() >= d && encoder2.getPosition() >= d && !lowerLimits()){
+      while(encoder1.getPosition() > d && encoder2.getPosition() > d && !lowerLimits()){
         left1.set(-1.0);
         left2.set(-1.0);
         right1.set(1.0);

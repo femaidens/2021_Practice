@@ -37,7 +37,6 @@ public class OI {
     driveX.whenPressed(new Robot.Commands.hatchRetract());
 
     // Climb
-
     public static JoystickButton operUp = new JoystickButton(operJoy, 12); //whenPressed
     public static JoystickButton operDown = new JoystickButton(operJoy, 15);
     public static JoystickButton operLeft = new JoystickButton(operJoy, 13);
