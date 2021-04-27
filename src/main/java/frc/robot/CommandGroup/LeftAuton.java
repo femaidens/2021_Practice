@@ -29,7 +29,7 @@ public class LeftAuton extends CommandGroup {
     // a CommandGroup containing them would require both the chassis and the
     // arm.
     addSequential(new DriveStraightDistance(distHorBay)); //random distance to the bay
-    addSequential(new TurnDegrees(90.0));
+    addSequential(new TurnDegrees(-90.0));
     addParallel(new UpLift());
     addSequential(new DriveStraightDistance(distVertBay)); //random distance to get closer to the bay
     addSequential(new MoveCargo());
@@ -37,7 +37,7 @@ public class LeftAuton extends CommandGroup {
     addParallel(new DownLift());
     addSequential(new TurnDegrees(180.0));
     addSequential(new DriveStraightDistance(2*distVertBay));
-    addSequential(new TurnDegrees(-90.0));
+    addSequential(new TurnDegrees(90.0));
     addSequential(new DriveStraightDistance(distHorBay));
   }
 }

@@ -33,9 +33,9 @@ public class MiddleAuton extends CommandGroup {
     addSequential(new GetPiece());
     addSequential(new GetPiece());
     addSequential(new MoveHatch());
-    addSequential(new TurnDegrees(-135.0));
+    addSequential(new TurnDegrees(135.0));
     addSequential(new DriveStraightDistance(distToPlat));
-    addSequential(new TurnDegrees(-45.0));
+    addSequential(new TurnDegrees(45.0));
     addSequential(new Intake());
   }
 }
