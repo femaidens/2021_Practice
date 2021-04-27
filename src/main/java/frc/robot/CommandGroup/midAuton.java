@@ -2,9 +2,11 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.Commands;
+package frc.robot.CommandGroup;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.Commands.*;
+
 
 public class midAuton extends CommandGroup {
   /** Add your docs here. */

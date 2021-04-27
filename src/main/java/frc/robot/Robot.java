@@ -5,7 +5,7 @@
 
 package frc.robot;
 
-import frc.robot.Commands.midAuton;
+import frc.robot.CommandGroup.*;
 import frc.robot.Subsystems.*;
 import frc.robot.Commands.*;
 
@@ -50,7 +50,7 @@ public class Robot extends TimedRobot {
     cargo = new Cargo();
     hatch = new Hatch();
     climb = new Climb();
-    autonomousCommand = new midAuton();
+    autonomousCommand = new frc.robot.CommandGroup.midAuton();
   }
 
   /**

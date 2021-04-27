@@ -2,7 +2,8 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.Commands;
+package frc.robot.CommandGroup;
+import frc.robot.Commands.*;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -27,12 +28,12 @@ public class rightAuton extends CommandGroup {
     // arm.
 
     addSequential(new driveStraightDistance(10));
-    addSequential(new turnDegrees(90));
+    addSequential(new turnDegrees(-90));
     addSequential(new switchAuton(2));
     addSequential(new cargoOuttake());
     addSequential(new driveStraightDistance(-10));
-    addSequential(new turnDegrees(90));
-    addSequential(new driveStraightDistance(10));
+    addSequential(new turnDegrees(-90));
     addParallel(new switchAuton(1));
+    addSequential(new driveStraightDistance(10));
   }
 }
