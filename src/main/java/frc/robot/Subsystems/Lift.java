@@ -41,35 +41,41 @@ public class Lift extends Subsystem {
   }
 
   public void moveUp() { // moves until getPosition is equal to distance b/w levels
-    while(liftEncoder.getPosition() < distance && liftEncoder2.getPosition() < distance) {
+    double initial = liftEncoder.getPosition();
+    double initial2 = liftEncoder2.getPosition();
+    while(!stopLimit() && liftEncoder.getPosition()-initial < distance && liftEncoder2.getPosition()-initial2 < distance) {
       liftRight1.set(0.8);
       liftRight2.set(0.8);
       liftLeft1.set(-0.8);
       liftLeft2.set(-0.8);
-      stopLimit();
     }
+
+    stop();
   }
 
   public void moveDown() {
-    while(liftEncoder.getPosition() > distance && liftEncoder2.getPosition() < distance) {
+    double initial = liftEncoder.getPosition();
+    double initial2 = liftEncoder2.getPosition();
+    while(!stopLimit() && liftEncoder.getPosition()-initial > distance && liftEncoder2.getPosition()-initial2 < distance) {
       liftRight1.set(-0.8); 
       liftRight2.set(-0.8);
       liftLeft1.set(0.8);
       liftLeft2.set(0.8);
-      stopLimit();
     }
+
+    stop();
   }
 
 
   public void liftTeleop() {
     double liftJoy = OI.operJoy.getRawAxis(5);
 
-    if(liftJoy < 0) {
+    if(!stopLimit() && liftJoy < 0) {
       liftRight1.set(-0.8); // for going down
       liftRight2.set(-0.8);
       liftLeft1.set(0.8);
       liftLeft2.set(0.8);
-    } else if (liftJoy > 0) {
+    } else if (!stopLimit() && liftJoy > 0) {
       liftRight1.set(0.8); // for going up
       liftRight2.set(0.8);
       liftLeft1.set(-0.8);
@@ -80,13 +86,8 @@ public class Lift extends Subsystem {
 
   }
 
-  public void stopLimit() { // for stopping when limit switch is hit
-    if(topRight.get() == true || topLeft.get() == true || bottomRight.get() == true || bottomLeft.get() == true) {
-      liftRight1.set(0.0);
-      liftRight2.set(0.0);
-      liftLeft1.set(0.0);
-      liftLeft2.set(0.0);
-    }
+  public boolean stopLimit() { // for stopping when limit switch is hit
+    return (topRight.get() == true || topLeft.get() == true || bottomRight.get() == true || bottomLeft.get() == true);
   }
 
   public void stop() { // for stopping entirely

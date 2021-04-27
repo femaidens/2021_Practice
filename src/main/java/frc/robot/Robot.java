@@ -7,10 +7,12 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Subsystems.*;
+import frc.robot.CommandGroups.*;
 import frc.robot.Commands.*;
 
 
@@ -31,6 +33,7 @@ public class Robot extends TimedRobot {
   public static Cargo cargo;
   public static Hatch hatch;
   public static Climb climb;
+  Command autonomousCommand;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -47,6 +50,8 @@ public class Robot extends TimedRobot {
     cargo = new Cargo();
     hatch = new Hatch();
     climb = new Climb();
+
+    autonomousCommand = new LeftAuton();
   }
 
   /**

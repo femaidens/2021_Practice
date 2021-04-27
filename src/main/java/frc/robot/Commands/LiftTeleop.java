@@ -21,7 +21,6 @@ public class LiftTeleop extends Command {
   @Override
   protected void execute() {
     Robot.lift.liftTeleop();
-    Robot.lift.stopLimit();
   }
 
   // Make this return true when this Command no longer needs to run execute()

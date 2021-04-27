@@ -24,25 +24,24 @@ public class ClimbAuto extends Command {
   @Override
   protected void execute() {
     Robot.climb.extendFront();
-    while(Robot.climb.ultra.getRangeInches() >= 0.5) {
+    while(Robot.climb.ultra.getRangeInches() >= 5) {
       Robot.drivetrain.rearRight.set(0.8);
       Robot.drivetrain.rearLeft.set(0.8);
     }
     Robot.climb.extendBack();
-
-    while(Robot.climb.ultra.getRangeInches() >= 0.5) {
-      Robot.drivetrain.frontRight.set(0.8);
-      Robot.drivetrain.frontLeft.set(0.8);
-    }
-
     Robot.climb.retractFront();
 
-    while(Robot.climb.ultra.getRangeInches() >= 0.5) {
+    while(Robot.climb.ultra.getRangeInches() >= 5) {
       Robot.drivetrain.frontRight.set(0.8);
       Robot.drivetrain.frontLeft.set(0.8);
     }
 
     Robot.climb.retractBack();
+
+    while(Robot.climb.ultra.getRangeInches() >= 3) {
+      Robot.drivetrain.frontRight.set(0.8);
+      Robot.drivetrain.frontLeft.set(0.8);
+    }
     
   }
 
