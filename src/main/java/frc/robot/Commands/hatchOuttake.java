@@ -11,7 +11,7 @@ public class hatchOuttake extends Command {
   public hatchOuttake() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.Hatch);
+    requires(Robot.hatch);
 
   }
 
@@ -22,7 +22,7 @@ public class hatchOuttake extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Hatch.outtakeGamePiece();
+    Robot.hatch.outtakeGamePiece();
 
   }
 
@@ -40,7 +40,7 @@ public class hatchOuttake extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.Hatch.stop();
+    Robot.hatch.stop();
 
   }
 }

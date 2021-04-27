@@ -12,7 +12,7 @@ public class climbDownFront extends Command {
   public climbDownFront() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.Climb);
+    requires(Robot.climb);
   }
 
   // Called just before this Command runs the first time
@@ -22,7 +22,7 @@ public class climbDownFront extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Climb.lowerFront();
+    Robot.climb.lowerFront();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -39,6 +39,6 @@ public class climbDownFront extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.Climb.stop();
+    Robot.climb.stop();
   }
 }

@@ -3,50 +3,58 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot;
+
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.Commands.*;
+
 
 /** Add your docs here. */
 public class OI {
-	public static Joystick driveJoy = new Joystick(RobotMap.driveP);
-    public static Joystick operJoy = new Joystick(RobotMap.operP);
+	public static Joystick driveJoy = new Joystick(0);
+    public static Joystick operJoy = new Joystick(1);
 
     //Cargo
-    public static JoystickButton operTriggerLeft = new JoystickButton(operJoy, 4); // whileHeld
-    public static JoystickButton operTriggerRight = new JoystickButton(operJoy, 5);
-
-    operTriggerLeft.whileHeld(new Robot.Commands.cargoIntake());
-    operTriggerRight.whileHeld(new Robot.Commands.cargoOuttake());
-
-    public static JoystickButton operY = new JoystickButton(operJoy, 3); //whenPressed
-    public static JoystickButton operX = new JoystickButton(operJoy, 2);
-
-    operY.whenPressed(new Robot.Commands.cargoExtend());
-    operX.whenPressed(new Robot.Commands.cargoRetract());
+    public static Button operTriggerLeft = new JoystickButton(operJoy, 4); //whileHeld
+    public static Button operTriggerRight = new JoystickButton(operJoy, 5);
+    public static Button operY = new JoystickButton(operJoy, 3); //whenPressed
+    public static Button operX = new JoystickButton(operJoy, 2);
 
     //Hatch
-    public static JoystickButton driverY = new JoystickButton(driveJoy, 3); //whenPressed
-    public static JoystickButton driverX = new JoystickButton(driveJoy, 2);
-    public static JoystickButton driverA = new JoystickButton(driveJoy, 0);
-    public static JoystickButton driverB = new JoystickButton(driveJoy, 1);
-
-    driveY.whenPressed(new Robot.Commands.hatchIntake());
-    driveX.whenPressed(new Robot.Commands.hatchOuttake());
-
-    driveY.whenPressed(new Robot.Commands.hatchExtend());
-    driveX.whenPressed(new Robot.Commands.hatchRetract());
+    public static Button driverY = new JoystickButton(driveJoy, 3); //whenPressed
+    public static Button driverX = new JoystickButton(driveJoy, 2);
+    public static Button driverA = new JoystickButton(driveJoy, 0);
+    public static Button driverB = new JoystickButton(driveJoy, 1);
 
     // Climb
-    public static JoystickButton operUp = new JoystickButton(operJoy, 12); //whenPressed
-    public static JoystickButton operDown = new JoystickButton(operJoy, 15);
-    public static JoystickButton operLeft = new JoystickButton(operJoy, 13);
-    public static JoystickButton operRight = new JoystickButton(operJoy, 14);
+    public static Button operUp = new JoystickButton(operJoy, 12); //whenPressed
+    public static Button operDown = new JoystickButton(operJoy, 15);
+    public static Button operLeft = new JoystickButton(operJoy, 13);
+    public static Button operRight = new JoystickButton(operJoy, 14);
 
-    operUp.whenPressed(new Robot.Commands.climbUpFront());
-    operLeft.whenPressed(new Robot.Commands.climbUpBack());
 
-    operDown.whenPressed(new Robot.Commands.climbDownFront());
-    operRight.whenPressed(new Robot.Commands.climbDownBack());
 
+    public void bindButtons(){
+
+        operTriggerLeft.whileHeld(new cargoIntake());
+        operTriggerRight.whileHeld(new cargoOuttake());
+
+        operY.whenPressed(new cargoExtend());
+        operX.whenPressed(new cargoRetract());
+
+        driverY.whenPressed(new hatchIntake());
+        driverX.whenPressed(new hatchOuttake());
+    
+        driverA.whenPressed(new hatchExtend());
+        driverB.whenPressed(new hatchRetract());
+        
+        operUp.whenPressed(new climbUpFront());
+        operLeft.whenPressed(new climbUpBack());
+
+        operDown.whenPressed(new climbDownFront());
+        operRight.whenPressed(new climbDownBack());
+
+    }
     
 }

@@ -5,6 +5,7 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
 import frc.robot.Robot.*;
 
@@ -13,7 +14,7 @@ public class turnDegrees extends Command {
 
   public turnDegrees(double x) {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.DriveTrain);
+    requires(Robot.driveTrain);
     angle = x;
   }
 
@@ -24,7 +25,7 @@ public class turnDegrees extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.DriveTrain.turnDegrees(angle);
+    Robot.driveTrain.turnDegrees(angle);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -36,13 +37,13 @@ public class turnDegrees extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.DriveTrain.stop();
+    Robot.driveTrain.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.DriveTrain.stop();
+    Robot.driveTrain.stop();
   }
 }

@@ -15,7 +15,7 @@ public class driveStraightDistance extends Command {
   public driveStraightDistance(double d) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.DriveTrain);
+    requires(Robot.driveTrain);
     distance = d;
   }
 
@@ -26,25 +26,26 @@ public class driveStraightDistance extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.DriveTrain.driveStraight();
+    Robot.driveTrain.driveStraight();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.DriveTrain.lEncoder.getPosition() >= distance && Robot.DriveTrain.rEncoder.getPosition() >= distance;
+    return Robot.driveTrain.leftEncoder.getPosition() >= distance
+        && Robot.driveTrain.rightEncoder.getPosition() >= distance;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.DriveTrain.stop();
+    Robot.driveTrain.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.DriveTrain.stop();
+    Robot.driveTrain.stop();
   }
 }

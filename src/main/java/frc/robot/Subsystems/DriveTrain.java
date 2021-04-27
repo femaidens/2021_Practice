@@ -13,10 +13,10 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.AnalogGyro;
-
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class DriveTrain extends SubsystemBase {
+public class DriveTrain extends Subsystem {
   public CANSparkMax frontL = new CANSparkMax(RobotMap.fLeftP, MotorType.kBrushless);
   public CANSparkMax backL = new CANSparkMax(RobotMap.bLeftP, MotorType.kBrushless);
   public CANSparkMax midL = new CANSparkMax(RobotMap.midLeftP, MotorType.kBrushless);
@@ -118,6 +118,12 @@ public class DriveTrain extends SubsystemBase {
   @Override
   public void periodic() {
     //setDefaultCommand();
+  }
+
+  @Override
+  protected void initDefaultCommand() {
+    // TODO Auto-generated method stub
+
   }
 
 

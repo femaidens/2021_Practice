@@ -5,9 +5,12 @@
 
 package frc.robot;
 
+import frc.robot.Commands.midAuton;
 import frc.robot.Subsystems.*;
+import frc.robot.Commands.*;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -24,11 +27,12 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
-  public static Subsystem DriveTrain;
-  public static Subsystem Hatch;
-  public static Subsystem Climb;
-  public static Subsystem Lift;
-  public static Subsystem Cargo;
+  public static DriveTrain driveTrain;
+  public static Hatch hatch;
+  public static Climb climb;
+  public static Lift lift;
+  public static Cargo cargo;
+  private Command autonomousCommand;
 
 
   /**
@@ -40,6 +44,13 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
+
+    driveTrain = new DriveTrain();
+    lift = new Lift();
+    cargo = new Cargo();
+    hatch = new Hatch();
+    climb = new Climb();
+    autonomousCommand = new midAuton();
   }
 
   /**
@@ -64,9 +75,12 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
+    
     m_autoSelected = m_chooser.getSelected();
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
+    
+    autonomousCommand.start();
   }
 
   /** This function is called periodically during autonomous. */
@@ -81,11 +95,13 @@ public class Robot extends TimedRobot {
         // Put default auto code here
         break;
     }
+
   }
 
   /** This function is called once when teleop is enabled. */
   @Override
-  public void teleopInit() {}
+  public void teleopInit() {
+  }
 
   /** This function is called periodically during operator control. */
   @Override

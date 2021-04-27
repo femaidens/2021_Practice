@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class switchTeleop extends Command {
 
   public switchTeleop() {
-    requires(Robot.Lift);
+    requires(Robot.lift);
   }
 
   // Called just before this Command runs the first time
@@ -21,7 +21,7 @@ public class switchTeleop extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Lift.teleopShift();
+    Robot.lift.teleopShift();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -33,13 +33,13 @@ public class switchTeleop extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.Lift.stop();
+    Robot.lift.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.Lift.stop();
+    Robot.lift.stop();
   }
 }

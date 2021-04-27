@@ -11,7 +11,7 @@ public class hatchRetract extends Command {
   public hatchRetract() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.Hatch);
+    requires(Robot.hatch);
 
   }
 
@@ -22,7 +22,7 @@ public class hatchRetract extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Hatch.retractFramePerimeter();
+    Robot.hatch.retractFramePerimeter();
 
   }
 
@@ -40,6 +40,6 @@ public class hatchRetract extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.Hatch.stop();
+    Robot.hatch.stop();
   }
 }

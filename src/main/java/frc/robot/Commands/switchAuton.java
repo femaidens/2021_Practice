@@ -15,7 +15,7 @@ public class switchAuton extends Command {
   private double levels;
 
   public switchAuton(int x) {
-    requires(Robot.Lift);
+    requires(Robot.lift);
     levels = x;
   }
 
@@ -26,13 +26,13 @@ public class switchAuton extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Lift.shiftLevel(Robot.Lift.getCurrentLevel() - levels);
+    Robot.lift.shiftLevel((int) (Robot.lift.getCurrentLevel() - levels));
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.Lift.getCurrentLevel() == levels){
+    if(Robot.lift.getCurrentLevel() == levels){
       return true;
     }
     return false;
@@ -41,13 +41,13 @@ public class switchAuton extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.Lift.stop();
+    Robot.lift.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.Lift.stop();
+    Robot.lift.stop();
   }
 }

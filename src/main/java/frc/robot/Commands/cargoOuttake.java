@@ -20,7 +20,7 @@ public class cargoOuttake extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Cargo.outtakeCargo();
+    Robot.cargo.outtakeCargo();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -32,13 +32,13 @@ public class cargoOuttake extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.Cargo.stopMotors();
+    Robot.cargo.stopMotors();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.Cargo.stopMotors();
+    Robot.cargo.stopMotors();
   }
 }

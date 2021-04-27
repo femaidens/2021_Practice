@@ -3,6 +3,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.Commands;
+import frc.robot.Subsystems.*;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
@@ -19,7 +20,7 @@ public class autoClimb extends Command {
     // eg. requires(chassis);
     distance = x;
     direction = d;
-    requires(Robot.Climb);
+    requires(Robot.climb);
   }
 
   // Called just before this Command runs the first time
@@ -30,24 +31,24 @@ public class autoClimb extends Command {
   @Override
   protected void execute() {
 
-    Robot.Climb.raiseFront();
-    while(Robot.Climb.sensorVal()) {
-      Robot.DriveTrain.backR.set(0.8);
-      Robot.DriveTrain.backL.set(0.8);
+    Robot.climb.raiseFront();
+    while(Robot.climb.sensorVal()) {
+      Robot.driveTrain.backR.set(0.8);
+      Robot.driveTrain.backL.set(0.8);
     }
-    Robot.Climb.raiseBack();
-    Robot.Climb.lowerFront();
+    Robot.climb.raiseBack();
+    Robot.climb.lowerFront();
 
-    while(Robot.Climb.sensorVal()) {
-      Robot.DriveTrain.frontR.set(0.8);
-      Robot.DriveTrain.frontL.set(0.8);
+    while(Robot.climb.sensorVal()) {
+      Robot.driveTrain.frontR.set(0.8);
+      Robot.driveTrain.frontL.set(0.8);
     }
 
-    Robot.Climb.lowerBack();
+    Robot.climb.lowerBack();
 
-    while(Robot.Climb.sensorVal()) {
-      Robot.DriveTrain.frontR.set(0.8);
-      Robot.DriveTrain.frontL.set(0.8);
+    while(Robot.climb.sensorVal()) {
+      Robot.driveTrain.frontR.set(0.8);
+      Robot.driveTrain.frontL.set(0.8);
     }
 
   }
@@ -61,13 +62,13 @@ public class autoClimb extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.Subsystems.Climb.stop();
+    Robot.climb.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.Subsystems.Climb.stop();
+    Robot.climb.stop();
   }
 }
