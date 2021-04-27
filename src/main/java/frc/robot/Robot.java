@@ -5,9 +5,11 @@
 package frc.robot;
 
 import frc.robot.Subsystems.*;
-//Kathryn pushed here
+import frc.robot.CommandGroup.*;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -29,6 +31,8 @@ public class Robot extends TimedRobot {
   public static Cargo cargo;
   public static Hatch hatch;
   public static Climb climb;
+  public static Timer timer;
+	Command autonomousCommand;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -44,6 +48,11 @@ public class Robot extends TimedRobot {
     cargo = new Cargo();
     hatch = new Hatch();
     climb = new Climb();
+    autonomousCommand = new LeftAuton();
+    autonomousCommand = new MiddleAuton();
+    autonomousCommand = new RightAuton();
+
+    timer.reset();
   }
 
   /**
@@ -69,16 +78,20 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     Scheduler.getInstance().run();
-    m_autoSelected = m_chooser.getSelected();
+    //m_autoSelected = m_chooser.getSelected();
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
-    System.out.println("Auto selected: " + m_autoSelected);
+    //System.out.println("Auto selected: " + m_autoSelected);
+    timer.start();
+    if (autonomousCommand != null){
+	  	autonomousCommand.start();
+  	}
   }
 
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
-    switch (m_autoSelected) {
+    /*switch (m_autoSelected) {
       case kCustomAuto:
         // Put custom auto code here
         break;
@@ -86,12 +99,18 @@ public class Robot extends TimedRobot {
       default:
         // Put default auto code here
         break;
-    }
+    }*/
+    if(timer.get() >= 15.0){
+		  autonomousCommand.cancel();
+  	}
   }
 
   /** This function is called once when teleop is enabled. */
   @Override
   public void teleopInit() {
+    if (autonomousCommand != null){
+      autonomousCommand.cancel();
+    }
   }
 
   /** This function is called periodically during operator control. */
