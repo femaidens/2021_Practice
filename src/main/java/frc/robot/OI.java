@@ -22,6 +22,7 @@ public class OI {
     public static Button moveHatchButton = new JoystickButton(driveJoy, 2);
     public static Button getPieceButton = new JoystickButton(driveJoy, 3);
     public static Button climbButton = new JoystickButton(driveJoy, 1);
+    public static Button alignButton = new JoystickButton(driveJoy, 5);
     
     public void bindButtons(){
         upLiftButton.whenPressed(new UpLift());
@@ -32,6 +33,7 @@ public class OI {
         moveHatchButton.whenPressed(new MoveHatch());
         getPieceButton.whenPressed(new GetPiece());
         climbButton.whenPressed(new AutoClimb());
+        alignButton.whenPressed(new AlignRobot_PID(10.0)); //random speed
 
     }
 }

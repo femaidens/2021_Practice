@@ -51,6 +51,15 @@ public class Drivetrain extends Subsystem {
     backRight.set(rightJoy);
   }
 
+  public void auton(double speedLeft, double speedRight){
+    frontLeft.set(speedLeft);
+    middleLeft.set(speedLeft);
+    backLeft.set(speedLeft);
+    frontRight.set(speedRight);
+    middleRight.set(speedRight);
+    backRight.set(speedRight);
+  }
+
   public void driveStraight(){
     if(leftEncoder.getPosition() > rightEncoder.getPosition()){
       frontLeft.set(0.5);

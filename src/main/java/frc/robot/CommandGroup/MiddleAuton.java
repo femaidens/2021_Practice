@@ -29,6 +29,7 @@ public class MiddleAuton extends CommandGroup {
     // a CommandGroup containing them would require both the chassis and the
     // arm.
     addSequential(new DriveStraightDistance(distToBay));
+    addSequential(new AlignRobot_PID(0.5)); //random slow-ish speed
     addSequential(new MoveHatch());
     addSequential(new GetPiece());
     addSequential(new GetPiece());

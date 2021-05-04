@@ -32,7 +32,9 @@ public class Robot extends TimedRobot {
   public static Hatch hatch;
   public static Climb climb;
   public static Timer timer;
-	Command autonomousCommand;
+  Command autonomousCommand;
+  
+  //public static Limelight limelight;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -51,6 +53,8 @@ public class Robot extends TimedRobot {
     autonomousCommand = new LeftAuton();
     autonomousCommand = new MiddleAuton();
     autonomousCommand = new RightAuton();
+
+    //limelight = new Limelight();
 
     timer.reset();
   }

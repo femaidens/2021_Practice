@@ -32,6 +32,7 @@ public class RightAuton extends CommandGroup {
     addSequential(new TurnDegrees(90.0));
     addParallel(new UpLift());
     addSequential(new DriveStraightDistance(distVertBay));
+    addSequential(new AlignRobot_PID(0.5)); //random slow-ish speed
     addSequential(new MoveCargo());
     addSequential(new MoveCargo());
     addParallel(new DownLift());
