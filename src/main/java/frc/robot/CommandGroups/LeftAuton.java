@@ -19,13 +19,13 @@ public class LeftAuton extends CommandGroup {
     addParallel(new TurnDegrees(90));
     addSequential(new ExtendCargo());
     addSequential(new DriveStraightDistance(closerToBay));
+    addSequential(new AutoAlign(0.1));
     addSequential(new OuttakeCargo());
     addSequential(new DriveStraightDistance(-closerToBay - 2)); 
     addSequential(new TurnDegrees(90));
     addParallel(new DriveStraightDistance(toBay));
     addSequential(new LiftDown());
     addSequential(new IntakeCargo());
-
-
+    
   }
 }

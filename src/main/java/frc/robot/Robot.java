@@ -33,6 +33,7 @@ public class Robot extends TimedRobot {
   public static Cargo cargo;
   public static Hatch hatch;
   public static Climb climb;
+  public static Limelight limelight;
   Command autonomousCommand;
 
   /**
@@ -50,6 +51,7 @@ public class Robot extends TimedRobot {
     cargo = new Cargo();
     hatch = new Hatch();
     climb = new Climb();
+    limelight = new Limelight();
 
     autonomousCommand = new LeftAuton();
   }

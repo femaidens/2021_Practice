@@ -53,13 +53,13 @@ public class Drivetrain extends Subsystem {
 
   }
 
-  public void auton(double speed) {
-    frontRight.set(speed);
-    frontLeft.set(speed);
-    middleRight.set(speed);
-    middleLeft.set(speed);
-    rearRight.set(speed);
-    rearLeft.set(speed);
+  public void auton(double rightSpeed, double leftSpeed) {
+    frontRight.set(rightSpeed);
+    frontLeft.set(leftSpeed);
+    middleRight.set(rightSpeed);
+    middleLeft.set(leftSpeed);
+    rearRight.set(rightSpeed);
+    rearLeft.set(leftSpeed);
   }
 
   public void driveStraight() {

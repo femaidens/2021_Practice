@@ -16,6 +16,7 @@ public class MiddleAuton extends CommandGroup {
     int toCargo = 10; // to cargo next to HAB
 
     addParallel(new DriveStraightDistance(toBay));
+    addSequential(new AutoAlign(0.1));
     addSequential(new ExtendHatch());
     addSequential(new ExtendIntake());
     addSequential(new RetractIntake());
@@ -25,5 +26,6 @@ public class MiddleAuton extends CommandGroup {
     addSequential(new DriveStraightDistance(toCargo));
     addSequential(new TurnDegrees(45));
     addSequential(new IntakeCargo());
+    
   }
 }
