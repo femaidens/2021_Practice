@@ -26,6 +26,7 @@ public class AutoAlign extends Command {
   public AutoAlign(double s){
     speed = s;
     requires(Robot.limelight);
+    requires(Robot.drivetrain);
   }
 
 
