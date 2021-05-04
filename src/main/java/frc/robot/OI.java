@@ -3,6 +3,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Commands.AdjustPID;
 import frc.robot.Commands.AutoLiftLevel;
 import frc.robot.Commands.SwitchLevelNum;
 import frc.robot.Commands.IntakeCargo;
@@ -17,35 +19,37 @@ public class OI {
     public static Joystick driveJoy = new Joystick(0);
     public static Joystick operJoy = new Joystick(1);
 
-    //lift buttons
+    // lift buttons
     public static Button switchLiftLevelNum = new JoystickButton(operJoy, 1);
     public static Button activateAutoLift = new JoystickButton(operJoy, 2);
-    
-    //cargo buttons
+
+    // cargo buttons
     public static Button intakeCargo = new JoystickButton(driveJoy, 1);
     public static Button outtakeCargo = new JoystickButton(driveJoy, 2);
     public static Button toggleCargoPist = new JoystickButton(driveJoy, 3);
-    //hatch buttons
+    // hatch buttons
     public static Button toggleHatchPerimPist = new JoystickButton(operJoy, 3);
     public static Button toggleHatchInOutPist = new JoystickButton(operJoy, 4);
 
-    public static Button climbPlat = new JoystickButton(driveJoy,5);
+    public static Button climbPlat = new JoystickButton(driveJoy, 5);
 
+    public static Button adjust = new JoystickButton(driveJoy, 6);
 
-
-    public static void bindButtons(){
-        //Lift
+    public static void bindButtons() {
+        // Lift
         switchLiftLevelNum.whenPressed(new SwitchLevelNum());
         activateAutoLift.whenPressed(new AutoLiftLevel());
-        //Cargo
+        // Cargo
         intakeCargo.whileHeld(new IntakeCargo());
         outtakeCargo.whileHeld(new OuttakeCargo());
         toggleCargoPist.toggleWhenPressed(new ControlCargoPiston());
-        //Hatch
+        // Hatch
         toggleHatchPerimPist.toggleWhenPressed(new ControlHatchPerimeterPiston());
         toggleHatchInOutPist.toggleWhenPressed(new ControlHatchInOutPiston());
-        //climb
+        // climb
         climbPlat.whenPressed(new ClimbPlatform());
+
+        adjust.whenPressed(new AdjustPID());
     }
         
 

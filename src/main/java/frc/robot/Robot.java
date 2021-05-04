@@ -3,17 +3,21 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot;
+
 //hi im bianca
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.CommandGroups.MiddleAuton;
 import frc.robot.Commands.*;
 import frc.robot.Subsystems.*;
 
 /**
- * The VM is configured to automatically run this class, and to call the functions corresponding to
- * each mode, as described in the TimedRobot documentation. If you change the name of this class or
- * the package after creating this project, you must also update the build.gradle file in the
+ * The VM is configured to automatically run this class, and to call the
+ * functions corresponding to each mode, as described in the TimedRobot
+ * documentation. If you change the name of this class or the package after
+ * creating this project, you must also update the build.gradle file in the
  * project.
  */
 public class Robot extends TimedRobot {
@@ -23,14 +27,15 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
-
-//Subsystems
-  public static DriveTrain drivetrain; 
+  // Subsystems
+  public static DriveTrain drivetrain;
   public static Lift lift;
   public static Cargo cargo;
   public static Hatch hatch;
   public static Climb climb;
-  
+  public static Limelight limelight;
+
+  private CommandGroup autonCommand;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -42,6 +47,12 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto choices", m_chooser);
 
     drivetrain = new DriveTrain();
+    lift = new Lift();
+    cargo = new Cargo();
+    hatch = new Hatch();
+    climb = new Climb();
+    limelight = new Limelight();
+    autonCommand = new MiddleAuton();
   }
 
   /**
@@ -69,6 +80,7 @@ public class Robot extends TimedRobot {
     m_autoSelected = m_chooser.getSelected();
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
+    autonCommand.start();
   }
 
   /** This function is called periodically during autonomous. */

@@ -16,6 +16,7 @@ public class DriveStraight extends Command {
 		requires(Robot.drivetrain);
 		dist = d;
 	}
+	
 	protected void initialize() {
 	}
 
