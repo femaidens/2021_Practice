@@ -33,7 +33,7 @@ public class OI {
         moveHatchButton.whenPressed(new MoveHatch());
         getPieceButton.whenPressed(new GetPiece());
         climbButton.whenPressed(new AutoClimb());
-        alignButton.whenPressed(new AlignRobot_PID(10.0)); //random speed
+        alignButton.whenPressed(new AlignRobot_PID(0.5)); //random speed
 
     }
 }

@@ -70,6 +70,7 @@ public class AlignRobot_PID extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Limelight.setLEDMode(1);
     Robot.drivetrain.stop();
 
   }
